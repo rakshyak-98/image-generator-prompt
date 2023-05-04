@@ -33,7 +33,7 @@ def generate_image():
     print(f'Created image string: {img_str}')
 
     print('Sending image...')
-    return render_template('index.html', generate_image=img_str)
+    return render_template('index.html', generated_image=img_str)
 
 
 if __name__ == '__main__':
