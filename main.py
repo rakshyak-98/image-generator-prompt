@@ -25,7 +25,7 @@ def generate_image():
     image = pipe(prompt).images[0]
     print('Image generated! Converting image...')
 
-    buffered = BytesIO
+    buffered = BytesIO()
     image.save(buffered, format='PNG')
     img_str = base64.b32encode(buffered.getvalue())
     img_str = 'data:image/png;base64,' + str(img_str)[2:-1]
