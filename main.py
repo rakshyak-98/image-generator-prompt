@@ -23,12 +23,14 @@ def generate_image():
     print(f'Generating an image of {prompt}')
 
     image = pipe(prompt).images[0]
-    print('Image generated! Converting image...')
+    print(f'output image: {image}')
+    print('Image generated! Converting image to png...')
 
     buffered = BytesIO()
     image.save(buffered, format='PNG')
-    img_str = base64.b32encode(buffered.getvalue())
+    img_str = base64.b64encode(buffered.getvalue())
     img_str = 'data:image/png;base64,' + str(img_str)[2:-1]
+    print(f'Created image string: {img_str}')
 
     print('Sending image...')
     return render_template('index.html', generate_image=img_str)
